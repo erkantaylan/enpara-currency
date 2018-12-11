@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="EnparaUsdCurrency.Views.DifferenceAlarmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mvvm="http://prismlibrary.com/"
+             mc:Ignorable="d"
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mah:DialogParticipation.Register="{Binding}">
+    <materialDesign:Card Margin="5">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}"
+                       Text="Alarm"
+                       TextAlignment="Center"
+                       Grid.Row="0" />
+
+            <mah:NumericUpDown mah:TextBoxHelper.Watermark="Start USD"
+                               mah:TextBoxHelper.UseFloatingWatermark="True"
+                               Value="{Binding Path=StartUsd}"
+                               Grid.Row="1" />
+            <mah:NumericUpDown mah:TextBoxHelper.Watermark="Start TRY"
+                               mah:TextBoxHelper.UseFloatingWatermark="True"
+                               Value="{Binding Path=StartTry}"
+                               Grid.Row="2" />
+            <mah:NumericUpDown mah:TextBoxHelper.Watermark="Desired Profit"
+                               mah:TextBoxHelper.UseFloatingWatermark="True"
+                               Value="{Binding Path=DesiredProfit}"
+                               Grid.Row="3" />
+            <TextBox mah:TextBoxHelper.Watermark="Current Profit"
+                     mah:TextBoxHelper.WatermarkAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Text="{Binding Path=CurrentProfit}"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Grid.Row="4" />
+            <mah:ToggleSwitch Grid.Row="5"
+                              Margin="5 5 5 20"
+                              IsChecked="{Binding Path=AlarmStarted}"
+                              OnLabel="Alarm Started"
+                              OffLabel="Alarm Stopped"
+                              OffSwitchBrush="{StaticResource AccentColorBrush}"
+                              OnSwitchBrush="{StaticResource AccentColorBrush}"
+                              Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" />
+        </Grid>
+    </materialDesign:Card>
+</UserControl>
